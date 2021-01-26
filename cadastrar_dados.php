@@ -7,7 +7,7 @@ $nome_carro = $_POST['nome'];
 $desc_carro = $_POST['desc'];
 $preco_carro = $_POST['preco'];
 
-$target_dir = "E:/xampp/htdocs/sitedoperna/imagens";
+$target_dir = "imagens";
 
  
  $executa = $db->prepare("insert  into carros (idcarros,nome,descricao,preco) values(:id,:nome,:desc,:preco)");
