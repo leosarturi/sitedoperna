@@ -1,16 +1,23 @@
 <?php
 require_once("connect.php");
-require_once("seguranca.php")
+require_once("seguranca.php");
 
-$executa = $db->prepare("select usuario,senha from admin where usuario=:usuario" )
+$executa = $db->prepare("select usuario,senha from admin where usuario=:usuario" );
 $executa->BindParam(':usuario', $_POST['usuario']);
-$resultado = $executa->execute();
+ $executa->execute();
+$count = $executa->RowCount();
 
-if($resultado->RowCount()==1){
+if($count==1){
     $linha = $executa->fetch(PDO::FETCH_OBJ);
-    if(($linha->usuario== $_POST['usuario']) && $linha->senha==$_POST['senha']);
+    if(($linha->usuario== $_POST['usuario']) && $linha->senha==$_POST['senha']){
     $_SESSION['logado']=1;
-    //home
+    
+    header('Location: home.php');
+    }else{
+      ?> <script> window.location="loginadmin.html" </script> <?php
+    }
+}{
+    ?> <script> window.location="loginadmin.html" </script> <?php
 }
 
 ?>
