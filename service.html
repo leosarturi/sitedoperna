@@ -52,15 +52,15 @@
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="about.html">
-                    Sobre Nós
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="service.php">
-                    Estoque
+                    Sobre nós
                   </a>
                 </li>
                 <li class="nav-item active">
+                  <a class="nav-link" href="service.html">
+                    Estoque
+                  </a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" href="contact.html">Fale com nós</a>
                 </li>
               </ul>
@@ -73,57 +73,26 @@
   </div>
   <!-- end hero area -->
 
+  <!-- service section -->
 
-  <!-- contact section -->
-
-  <section class="contact_section layout_padding-bottom layout_padding2-top">
-    <div class="container px-0">
+  <section class="service_section layout_padding-bottom layout_padding2-top">
+    <div class="container">
       <div class="heading_container">
-        <h2 class="">
-          con<span>ta</span>te-nos
+        <h2>
+          Es<span>to</span>que
         </h2>
-      </div>
-
-    </div>
-    <div class="container container-bg">
-      <div class="row">
-        <div class="col-lg-8 col-md-7 px-0">
-          <div class="map_container">
-            <div class="map-responsive">
-<<<<<<< HEAD
-              <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Eiffel+Tower+Paris+France" width="600" height="300" frameborder="0" style="border:0; width: 100%; height:100%" allowfullscreen></iframe>
-=======
-              <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Uniao+da+Vitoria+Rua+Benjamin+constant+730" width="600" height="300" frameborder="0" style="border:0; width: 100%; height:100%" allowfullscreen></iframe>
->>>>>>> f5839c6486caffc61f8a45a73dc7b855fab0bccb
-            </div>
-          </div>
-        </div>
-        <div class="col-md-5 col-lg-4 px-0">
-          <form action="">
-            <div>
-              <input type="text" placeholder="Nome Completo" />
-            </div>
-            <div>
-              <input type="email" placeholder="Email" />
-            </div>
-            <div>
-              <input type="text" placeholder="Telefone" />
-            </div>
-            <div>
-              <input type="text" class="message-box" placeholder="Mensagem" />
-            </div>
-            <div class="d-flex ">
-              <button>
-                ENVIAR
-              </button>
-            </div>
-          </form>
-        </div>
+        
+        <?php
+        include("listarcarros.php");
+        ?>
+        <p>
+          aaaaaaaaa aaaaaaaaa aaaaaaaaaaa
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- end contact section -->
+  <!-- end service section -->
 
 
   <!-- info section -->
@@ -131,11 +100,17 @@
   <section class="info_section  layout_padding2-top">
     <div class="social_container">
       <div class="social_box">
-        <a href="http://www.facebook.com">
+        <a href="">
           <img src="images/fb.png" alt="">
         </a>
-        <a href="http://www.instagram.com">
-          <img src="images/instagram.png" alt="">
+        <a href="">
+          <img src="images/twitter.png" alt="">
+        </a>
+        <a href="">
+          <img src="images/linkedin.png" alt="">
+        </a>
+        <a href="">
+          <img src="images/youtube.png" alt="">
         </a>
       </div>
     </div>
@@ -144,10 +119,10 @@
         <div class="row">
           <div class="col-md-6 col-lg-3">
             <h6>
-              SOBRE NÓS
+              ABOUT US
             </h6>
             <p>
-              AAAAAAAA AAAAAAAAAAAA AAAAAAAAAA
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doLorem ipsum dolor sit amet, consectetur adipiscing elit, sed doLorem ipsum dolor sit amet,
             </p>
           </div>
           <div class="col-md-6 col-lg-3">
@@ -155,36 +130,34 @@
               Instagram
             </h6>
             <p>
-              AAAAAAAAAA AAAAAAAAAA
-              AAAAAAAA
-              AAAAAAAAAAAAAAAA
+              Lorem ipsum dolor sit amet, consectetur adipi
+              scing elit, sed doLorem ipsum dolor sit
             </p>
           </div>
           <div class="col-md-6 col-lg-3">
             <h6>
-              PRECISA DE AJUDA?
+              NEED HELP
             </h6>
             <p>
-              AAAAAAAAAAA AAAAAAAAAAAA AAAAAAAAAA
-              AAAAAAAAAAA
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doLorem ipsum dolor sit amet, consectetur adipiscing elit, sed doLorem ipsum dolor sit amet,
             </p>
           </div>
           <div class="col-md-6 col-lg-3">
             <h6>
-              CONTATE-NOS
+              CONTACT US
             </h6>
             <div class="info_link-box">
               <a href="">
                 <img src="images/location.png" alt="">
-                <span> AV BENTO M... </span>
+                <span> Gb road 123 london Uk </span>
               </a>
               <a href="">
                 <img src="images/call.png" alt="">
-                <span>+55 (42) 9 9999-9999</span>
+                <span>+01 12345678901</span>
               </a>
               <a href="">
                 <img src="images/mail.png" alt="">
-                <span> PERNA@gmail.com</span>
+                <span> demo@gmail.com</span>
               </a>
             </div>
           </div>
@@ -195,6 +168,8 @@
     <section class=" footer_section">
       <div class="container">
         <p>
+          &copy; <span id="displayYear"></span> All Rights Reserved By
+          <a href="https://html.design/">Free Html Templates</a>
         </p>
       </div>
     </section>
