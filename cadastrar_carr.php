@@ -14,6 +14,13 @@ require_once("seguranca.php");
         Nome do carro<input type="text" name="nome"><br>
         Descriçao do carro<input type="text" name="desc"><br>
         Preço do carro<input type="number" name="preco"><br>
+        Marca<input type="text" name="marca"><br>
+        Modelo<input type="text" name="modelo"><br>
+        Ano<input type="number" name="ano"><br>
+        Câmbio<input type="text" name="cambio"><br>
+        Portas<input type="number" name="portas"><br>
+        Combustivel<input type="text" name="combustivel"><br>
+        Quilometragem<input type="number" name="quilometragem"><br>
         <br>
         <button type="button" onclick="duplicarCampos()">Adicionar Imagem</button>
         <div id="destino">

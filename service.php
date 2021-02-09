@@ -76,7 +76,7 @@
   <!-- service section -->
 
   <section class="service_section layout_padding-bottom layout_padding2-top">
-    <div class="container">
+ 
       <div class="heading_container">
         <h2>
           Es<span>to</span>que
@@ -85,7 +85,7 @@
           include("listarcarros.php");
          ?>
       </div>
-    </div>
+   
   </section>
 
   <!-- end service section -->
