@@ -175,6 +175,13 @@ while ($linha = $executa->fetch(PDO::FETCH_OBJ)){
         color: red;
 
     }
+     
+
+    .navbar-brand img{
+      width: 150px;
+
+    }
+
 
   </style>  
 </html>

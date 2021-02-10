@@ -11,6 +11,8 @@
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta name="author" content="" />
+  <script type='text/javascript' src='https://code.jquery.com/jquery-1.11.0.js'></script>
+<script type='text/javascript' src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
 
   <title>
     Perna
@@ -29,6 +31,7 @@
   <link href="css/style.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
+
 </head>
 
 <body class="sub_page">
@@ -90,30 +93,26 @@
         <div class="col-lg-8 col-md-7 px-0">
           <div class="map_container">
             <div class="map-responsive">
-<<<<<<< HEAD
               <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Eiffel+Tower+Paris+France" width="600" height="300" frameborder="0" style="border:0; width: 100%; height:100%" allowfullscreen></iframe>
-=======
-              <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Uniao+da+Vitoria+Rua+Benjamin+constant+730" width="600" height="300" frameborder="0" style="border:0; width: 100%; height:100%" allowfullscreen></iframe>
->>>>>>> f5839c6486caffc61f8a45a73dc7b855fab0bccb
             </div>
           </div>
         </div>
         <div class="col-md-5 col-lg-4 px-0">
-          <form action="">
+          <form action="inserir_contato.php" method="POST">
             <div>
-              <input type="text" placeholder="Nome Completo" />
+              <input type="text" placeholder="Nome Completo" required="" name="nome" />
             </div>
             <div>
-              <input type="email" placeholder="Email" />
+              <input type="email" placeholder="Email"  name="email"/>
             </div>
             <div>
-              <input type="text" placeholder="Telefone" />
+              <input type="number"  placeholder="Telefone" required="" name="telefone" />
             </div>
             <div>
-              <input type="text" class="message-box" placeholder="Mensagem" />
+              <input type="text" class="message-box" placeholder="Mensagem" required="" name="mensagem" />
             </div>
             <div class="d-flex ">
-              <button>
+              <button type="submit">
                 ENVIAR
               </button>
             </div>
@@ -210,6 +209,17 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
   </script>
   <script type="text/javascript" src="js/custom.js"></script>
+
+
+    <style type="text/css">
+
+    .navbar-brand img{
+      width: 150px;
+
+    }
+
+
+</style>
 </body>
 
 </html>

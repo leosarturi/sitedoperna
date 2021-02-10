@@ -81,19 +81,11 @@
         <h2>
           Es<span>to</span>que
         </h2>
-<<<<<<< HEAD
 
         <?php
         include("listarcarros.php");
         ?>
-        <p>
-          aaaaaaaaa aaaaaaaaa aaaaaaaaaaa
-        </p>
-=======
-        <?php
-          include("listarcarros.php");
-         ?>
->>>>>>> f5839c6486caffc61f8a45a73dc7b855fab0bccb
+
       </div>
    
   </section>
@@ -174,11 +166,8 @@
     <section class=" footer_section">
       <div class="container">
         <p>
-<<<<<<< HEAD
           &copy; <span id="displayYear"></span> All Rights Reserved By
           <a href="https://html.design/">Free Html Templates</a>
-=======
->>>>>>> f5839c6486caffc61f8a45a73dc7b855fab0bccb
         </p>
       </div>
     </section>
@@ -194,6 +183,14 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
   </script>
   <script type="text/javascript" src="js/custom.js"></script>
+    <style type="text/css">
+
+    .navbar-brand img{
+      width: 150px;
+
+    }
+
+</style>
 </body>
 
 </html>

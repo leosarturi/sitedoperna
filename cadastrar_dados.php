@@ -26,9 +26,11 @@ $target_dir = "imagens";
 
 foreach ( $_FILES as $chave => $valor ) { 
     $$chave = $valor;
-    
-    $a= $valor['tmp_name'];
-if(move_uploaded_file($a,$target_dir ."/". $valor['name'])){
+
+    //$a=$valor['tmp_name'];
+    $a = resize($valor,$target_dir);
+    echo $a;
+if($a!=null ){
   $executa2 = $db->prepare("insert into imagens_carros (idcarro,nome_imagem) values(:id,:nome)");
   $executa2->BindParam(':id',$id);
   $executa2->BindParam(':nome',$valor['name']);
@@ -36,6 +38,18 @@ if(move_uploaded_file($a,$target_dir ."/". $valor['name'])){
 }else{
     echo "1";
 }
+}
+
+function resize($originalImage,$dir){
+
+  list($width, $height) = getimagesize($originalImage['tmp_name']);
+  $newName=basename($originalImage['name']);
+  $imageResized = imagecreatetruecolor(450, 300);
+  $imageTmp     = imagecreatefromjpeg ($originalImage['tmp_name']);
+  imagecopyresampled($imageResized, $imageTmp, 0, 0, 0, 0, 450, 300, $width, $height);
+
+  imagejpeg($imageResized, $dir . "/" . $newName,100);
+  return $imageResized;
 }
 
 ?>
