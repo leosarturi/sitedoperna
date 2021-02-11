@@ -81,11 +81,12 @@
         <h2>
           Es<span>to</span>que
         </h2>
-
+<div class="carros">
         <?php
         include("listarcarros.php");
         ?>
 
+      </div>
       </div>
    
   </section>
@@ -189,6 +190,18 @@
       width: 150px;
 
     }
+    .carros{
+      
+      width:100%;
+   
+      
+      
+    }
+    body{
+      background-color:#ffffff;
+      
+    }
+    
 
 </style>
 </body>

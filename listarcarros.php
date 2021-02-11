@@ -18,15 +18,15 @@ $executa = $db->query("select * from carros");
 while ($linha = $executa->fetch(PDO::FETCH_OBJ)){
   $nomearray= array();
    $nome = $linha->nome; 
-   echo "<br>";
+   
     $preco = $linha->preco;
-    echo "<br>";
+   
     $descricao = $linha->descricao;
-    echo "<br>";
+   
     $executa2=$db->prepare("select * from imagens_carros where idcarro=:id");
     $executa2->BindParam(':id',$linha->idcarros);
     $executa2->execute();
-    ?>
+    
     
                    
                    
@@ -35,9 +35,12 @@ while ($linha = $executa->fetch(PDO::FETCH_OBJ)){
                               
                                 
 
-<?php
-                             
 
+      ?>                       
+    <a href="#" id="carro"><div id="carouselExampleControls<?php echo $linha->idcarros?>" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+
+    <?php
 
     while($linha2=$executa2->fetch(PDO::FETCH_OBJ)){
       $nome = array($linha2->nome_imagem); 
@@ -49,139 +52,167 @@ while ($linha = $executa->fetch(PDO::FETCH_OBJ)){
 
 
 
-//echo $url;
-?>
- 
+
+
 
                                  
                                  
-<!-- <img src="  " class="foto" width = "650px" height = "365px" > -->
+
  
                   
                 
-                  
-  <?php
+  
     }
     
     
-?>
-    <section class="slider_section">
-    <div class="slider_container">
-      <div id="carouselExampleIndicators<?php echo $linha->idcarros ?>" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
+  
+     
                 
                            
  
-   <?php
+   
    
    foreach($nomearray as $key=>$valor){
     $url ="imagens/" . $valor;
     if($key==0){
       
-      ?>
-<div class="carousel-item  active">
-      <?php 
-      
+    ?>
+    <div class="carousel-item active">
+    <?php
       
     }else{
 
-      ?>
+      
 
-<div class="carousel-item  ">
-  <?php
-    }
-?>     
+   ?>
+     <div class="carousel-item">
+   <?php
   
   
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="col-md-6 px-0">
-                    <div class="img-box">
-                    <img src="<?php echo $url; ?>" width="450" height="300" alt="" />
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="detail-box">
-                      <h1>
-                        <?php echo $linha->nome ?>
-                      </h1>
-                      <h1 name="preco">
-                         <?php echo $linha->preco ?>
-                      </h1>
-                      <p>
-                        <?php echo $linha->descricao ?>
-                      </p>
-                      <a href="">
-                        Mostrar mais
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
 
+
+
+
+   }
+   ?>
+<img class="d-block w-100 img-box" src="<?php echo $url ?>" alt="First slide">
+</div>
+<?php
+  }
+
+?>
+</div>
+<div class="detalhes"> 
+
+<?php 
+echo '<div class="nome">' .  $linha->nome . '</div>'; 
+?>
 
 
 <?php
-   }
-
-
+echo '<div class="preco">' ."R$" .  $linha->preco . '</div>';
+echo '<div class="ano">' . $linha->ano . '</div>';
 ?>
 
 </div>
-          <div class="carousel_btn-box">
-            <a class="carousel-control-prev" href="#carouselExampleIndicators<?php  echo $linha->idcarros ?>" role="button" data-slide="prev">
-              <span class="sr-only">Anterior</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators<?php  echo $linha->idcarros ?>" role="button" data-slide="next">
-              <span class="sr-only">Proximo</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-                        
+
+
+<?php
+if(sizeof($nomearray)>1){
+  ?>
+<a class="carousel-control-prev" href="#carouselExampleControls<?php echo $linha->idcarros?>" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls<?php echo $linha->idcarros?>" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+  <?php
+}
+  ?>
+</div></a>
+<?php
+
+          
                        
                       
 
-               
-    <?php
+    
+
 }
+
+
 ?>
-
-
-    <!-- end slider section -->
-  </div>
-
+</div>
+</body>  
+</html>
+<script type="text/javascript" src="js/custom.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.js"></script>
+    
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
     </script>
-    <script type="text/javascript" src="js/custom.js"></script>
-</body>
+    
+
 
 <style>
-    #nome{
-        font-size: 15;
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    
+  background-color:black;
+  
+  
+  
+}
 
-    }
-    .foto{
-         position: relative;
-  right: 300px;
 
 
-    }
-    #preco{
-        color: red;
 
-    }
-     
+.nome, .ano,.preco{
 
-    .navbar-brand img{
-      width: 150px;
+}
+#carro{
+  
+  color:white;
+}
 
-    }
+
+.carousel:hover{
+  border-color: #fbac2e;
+  background-color:#fbac2e;
+}
+.carousel{
+  border: 3px solid black;
+  float:left;
+  margin-left:2.5%;
+  margin-top:2%;
+  background-color:#000;
+  
+  
+  width:30%;
+  
+  
+  
+}
+  .carousel-inner{
+   
+    
+    
+    width:100%;
+    
+    
+    
+  }
+  .carousel-item, .active{
+    width:100%;
+    
+    
+    
+  }
 
 
   </style>  
-</html>
+<script>
+$('.carousel').carousel();
+</script>
