@@ -82,9 +82,7 @@
           Es<span>to</span>que
         </h2>
 <div class="carros">
-        <?php
-        include("listarcarros.php");
-        ?>
+      
 
       </div>
       </div>
