@@ -9,6 +9,7 @@
 
 
 <?php
+
 require_once("connect.php");
 
 $executa = $db->query("select * from carros");
