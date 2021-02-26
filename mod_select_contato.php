@@ -4,7 +4,7 @@
 	require_once("seguranca.php");
 	
 
-$q = "SELECT idcontato, nome,email, telefone, mensagem as nome, email, telefone, mensagem FROM contato ";
+$q = "SELECT idcontato, nome,email, telefone, mensagem FROM contato ";
 
 $where = " 1 ";
 

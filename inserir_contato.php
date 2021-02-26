@@ -1,7 +1,6 @@
 <?php
 try {
     include ("connect.php");
-    include  ("seguranca.php");
 
 
 

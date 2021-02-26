@@ -97,7 +97,7 @@ while ($linha = $executa->fetch(PDO::FETCH_OBJ)){
                 <div class="row">
                   <div class="col-md-6 px-0">
                     <div class="img-box">
-                    <img src="<?php echo $url; ?>" width="450" height="300" alt="" />
+                    <img src="<?php echo $url; ?>" alt="" />
                     </div>
                   </div>
                   <div class="col-md-6">

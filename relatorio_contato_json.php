@@ -1,10 +1,11 @@
 <?php
 include('connect.php');
 require_once("seguranca.php");
+$id = $_GET['id'];
 
 
- $executa = $db->prepare("SELECT * FROM contato");
-  
+ $executa = $db->prepare("SELECT * FROM contato where idcontato =:id ");
+  $executa->BindParam(':id',$id);
  	       
         $executa->execute();
 
