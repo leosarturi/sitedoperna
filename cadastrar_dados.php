@@ -1,13 +1,14 @@
 <?php
 require_once("connect.php");
 require_once("seguranca.php");
+include("WideImage/WideImage.php");
 $id = new DateTime();
 $id= $id->getTimestamp();
 $nome_carro = $_POST['nome'];
 $desc_carro = $_POST['desc'];
 $preco_carro = $_POST['preco'];
 
-$target_dir = "imagens";
+$target_dir = "imagens/";
 
  
  $executa = $db->prepare("insert  into carros (idcarros,nome,descricao,preco,marca,modelo,ano,cambio,portas,combustivel,quilometragem) values(:id,:nome,:desc,:preco,:marca,:modelo,:ano,:cambio,:portas,:combustivel,:quilometragem)");
@@ -26,11 +27,12 @@ $target_dir = "imagens";
 
 foreach ( $_FILES as $chave => $valor ) { 
     $$chave = $valor;
-
+$diro = $valor['tmp_name'];
     //$a=$valor['tmp_name'];
-    $a = resize($valor,$target_dir);
-    echo $a;
-if($a!=null ){
+    $a = resize2($valor,$target_dir);
+    
+    
+if($a!=null){
   $executa2 = $db->prepare("insert into imagens_carros (idcarro,nome_imagem) values(:id,:nome)");
   $executa2->BindParam(':id',$id);
   $executa2->BindParam(':nome',$valor['name']);
@@ -40,7 +42,7 @@ if($a!=null ){
 }
 }
 
-function resize($originalImage,$dir){
+function resize2($originalImage,$dir){
 
   list($width, $height) = getimagesize($originalImage['tmp_name']);
   $newName=basename($originalImage['name']);
@@ -50,6 +52,21 @@ function resize($originalImage,$dir){
 
   imagejpeg($imageResized, $dir . "/" . $newName,100);
   return $imageResized;
+}
+
+function resize($originalImage,$dir){
+  move_uploaded_file($originalImage,$dir);
+  try{
+  $image = WideImage::load($dir);
+  $return =$image->resize(400,300);
+  $return->saveToFile($dir.$originalImage['name']);
+  return $return;
+  }catch(Exception $e){
+    echo $e;
+  }
+
+  
+ 
 }
 
 ?>
