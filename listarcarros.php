@@ -94,6 +94,7 @@ while ($linha = $executa->fetch(PDO::FETCH_OBJ)){
 
 
 
+
    }
    ?>
 <img class="d-block w-100 img-box" src="<?php echo $url ?>" alt="First slide">
