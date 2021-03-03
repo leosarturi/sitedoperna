@@ -1,4 +1,5 @@
 <?php
+
 require_once("connect.php");
 require_once("seguranca.php");
 ?>
@@ -8,8 +9,69 @@ require_once("seguranca.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de carros</title>
+    <script src="js/jquery.js"></script>
 </head>
 <body>
+<?php
+if(isset($_GET['idcarros'] )){
+    $executa=$db->prepare("select * from carros where idcarros=:id");
+    $executa->BindParam(':id',$_GET['idcarros']);
+    $executa->execute();
+    if ($executa->rowCount()!=0){
+        $linha=$executa->fetch(PDO::FETCH_OBJ);
+    }
+         
+    $executa2=$db->prepare("select nome_imagem from imagens_carros where idcarro=:id");
+    $executa2->BindParam(':id',$_GET['idcarros']);
+    $executa2->execute();
+   
+
+         
+    ?>
+ <form action="cadastrar_dados.php" method="POST" enctype="multipart/form-data">
+ 
+        Nome do carro<input type="text" name="nome" value="<?php echo $linha->nome ?>"><br>
+        Descriçao do carro<input type="text" name="desc" value="<?php echo $linha->descricao ?>"><br>
+        Preço do carro<input type="number" name="preco" value="<?php echo $linha->preco ?>"><br>
+        Marca<input type="text" name="marca" value="<?php echo $linha->marca ?>"><br>
+        Modelo<input type="text" name="modelo" value="<?php echo $linha->modelo ?>"><br>
+        Ano<input type="number" name="ano" value="<?php echo $linha->ano ?>"><br>
+        Câmbio<input type="text" name="cambio" value="<?php echo $linha->cambio ?>"><br>
+        Portas<input type="number" name="portas" value="<?php echo $linha->portas ?>"><br>
+        Combustivel<input type="text" name="combustivel" value="<?php echo $linha->combustivel ?>"><br>
+        Quilometragem<input type="number" name="quilometragem" value="<?php echo $linha->quilometragem ?>"><br>
+        <input type="hidden" name="id" value="<?php echo $linha->idcarros ?>"><br>
+        
+        <br>
+        <button type="button" onclick="duplicarCampos()">Adicionar Imagem</button><br>
+        -----Imagens-----<br>
+        
+             <?php
+ if ($executa2->rowCount()!=0){
+     
+
+    while($linha2=$executa2->fetch(PDO::FETCH_OBJ)){
+        $name=$linha2->nome_imagem;
+        
+        ?>
+<img src="imagens/<?php echo $linha2->nome_imagem ?> " id="<?php echo $name; ?>"><button type="button" id="<?php echo $name; ?>" onclick="editarimg(this.id)">deletar</button>
+<br>
+        <?php
+        
+    }
+}
+             ?>
+              
+              <div id="destino">
+        </div>
+        <input type="hidden" name="query" id="query" value="">
+        <input type="hidden" name="imagemcount" id="count" value="1">
+        <br><button type="submit">Salvar</button>
+    </form>
+
+<?php    
+}else{
+?>
     <form action="cadastrar_dados.php" method="POST" enctype="multipart/form-data">
         Nome do carro<input type="text" name="nome"><br>
         Descriçao do carro<input type="text" name="desc"><br>
@@ -22,30 +84,56 @@ require_once("seguranca.php");
         Combustivel<input type="text" name="combustivel"><br>
         Quilometragem<input type="number" name="quilometragem"><br>
         <br>
-        <button type="button" onclick="duplicarCampos()">Adicionar Imagem</button>
+        <button type="button" onclick="duplicarCampos()">Adicionar Imagem</button><br>
+        -----Imagens-----<br>
         <div id="destino">
-            -----Imagens-----<br> <input type="file" id="origem" name="imagem" ><br>
+             
+              
+             
         </div>
         <input type="hidden" name="imagemcount" id="count" value="1">
         <br><button type="submit">Salvar</button>
     </form>
+    <?php
+}
+?>
 </body>
 </html>
 <script>
+function editarimg(id){
+    if(!document.getElementById('query').value.includes(id)){
+            $("#query").val($("#query").val()+","+id);
+            document.getElementById(id).style.opacity=0.3;
+    }
+    
+    
+}
+function deletarimagem(id){
+    
+     document.getElementById(id).remove();
+     document.getElementById(id).remove();
+     
+    
+}
     var count =1;
     function duplicarCampos(){
-	var clone = document.getElementById('origem').cloneNode(true);
-    clone.setAttribute("name","imagem"+count)
-    
+	var clone = '<input type="file" id="imag"  name="imagem" required >';
+    var clone2= '<button type="button" id="buttom"  onclick="deletarimagem(this.id)">deletar imagem</button><br>  ';
+
+ 
 	var destino = document.getElementById('destino');
-	destino.appendChild (clone);
-    destino.appendChild(document.createElement("br"));
+	$("#destino").append(clone);
+    $("#destino").append(clone2);
+    
+    clone=document.getElementById('imag');
+    clone2=document.getElementById('buttom');
+       clone.setAttribute("name","imagem"+count);
+    
+    clone.setAttribute("id","imagem"+count);
+    clone2.setAttribute("id","imagem"+count);
+    
 	
-	var camposClonados = clone.getElementsByTagName('input');
 	
-	for(i=0; i<camposClonados.length;i++){
-		camposClonados[i].value = '';
-	}
     count++
     document.getElementById('count').value=count;
     }

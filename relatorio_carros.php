@@ -85,7 +85,7 @@ require_once("seguranca.php");
           formatters: {
               "commands": function(column, row)
               {
-                  return                           "<button type=\"button\" class=\"btn btn-xs btn-default command-delete\" data-row-id=\"" + row.idcarros + "\"><span class=\"glyphicon glyphicon-trash\"></span></button>";
+                  return "<button type=\"button\" class=\"btn btn-xs btn-default command-delete\" data-row-id=\"" + row.idcarros + "\"><span class=\"glyphicon glyphicon-trash\"></span></button>" +"<button type=\"button\" class=\"btn btn-xs btn-default command-edit\" data-row-id=\"" + row.idcarros + "\"><span class=\"glyphicon glyphicon-edit\"></span></button>";
               }
 
           }
@@ -94,8 +94,7 @@ require_once("seguranca.php");
       {
           grid.find(".command-edit").on("click", function(e)
           {
-             id = $(this).data("row-id");
-             $("#myModal").modal();
+            document.location = 'cadastrar_carr.php?idcarros=' + $(this).data("row-id");
           }).end().find(".command-delete").on("click", function(e)
           {
               document.location = 'deletar_carros.php?idcarros=' + $(this).data("row-id");
