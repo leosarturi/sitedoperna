@@ -4,7 +4,7 @@
 	require_once("seguranca.php");
 	
 
-$q = "SELECT idcontato, nome,email, telefone, mensagem FROM contato ";
+$q = "SELECT * FROM carros ";
 
 $where = " 1 ";
 
@@ -12,7 +12,7 @@ $where = " 1 ";
 
 $get_data['rows'] = array();
 
-$mod_select = $db->prepare('SELECT COUNT(*) as total FROM contato ');
+$mod_select = $db->prepare('SELECT COUNT(*) as total FROM carros ');
 $mod_select->execute();
 $mod_count = $mod_select->fetch(PDO::FETCH_OBJ); 
 //print_r($mod_count);
@@ -21,7 +21,7 @@ $get_data['total'] = $mod_count->total;
 if (isset($_POST['sort'])){
 	$orderby = ' ORDER BY ';
 	foreach($_POST['sort'] as $campo => $ordem){
-		if ($campo=='idcontato'){
+		if ($campo=='idcarros'){
             $campo = 'nome';
         }
 		$orderby .= "{$campo} {$ordem}, ";

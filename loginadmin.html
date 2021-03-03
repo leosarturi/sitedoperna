@@ -1,16 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<body>
-    <form action="loginadmin.php" method="POST">
-        Usuário<input type="text" name="usuario">
-        Senha<input type="text" name="senha">
-<button type="submit">Logar</button>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
+  <meta name="author" content="GeeksLabs">
+  <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+  <link rel="shortcut icon" href="img/favicon.png">
+
+  <title>Login</title>
+
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap-theme.css" rel="stylesheet">
+  <link href="css/elegant-icons-style.css" rel="stylesheet" />
+  <link href="css/font-awesome.css" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/style-responsive.css" rel="stylesheet" />
+
+
+</style>
+
+<body class="login-page" >
+  <div class="container">
+
+
+
+
+    <form class="login-form" method="post" id="jsonForm" action="loginadmin.php">
+
+
+      <div class="login-wrap">
+       <center>Login</center>
+     
+       
+
+        <div class="input-group">
+          <span class="input-group-addon"><i class="icon_profile"></i></span>
+          <input type="text" class="form-control" placeholder="Usuário" name="usuario" autofocus>
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="icon_key_alt"></i></span>
+          <input type="password" class="form-control" placeholder="Senha" name="senha" >
+        </div>
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+      </div>
     </form>
+  </div>
+
+<style>
+.login-page
+{
+  
     
+
+
+}
+</style>
+<link href="css/jquery.growl.css" rel="stylesheet" />
+
+<script src="js/jquery.js"></script>
+<script src="js/jquery.form.js"></script>
+<script src="js/jquery.growl.js"></script>
+      <script src="js/bootstrap-typeahead.js"></script>
+
+
 </body>
+
+
 </html>

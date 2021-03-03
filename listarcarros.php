@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-
 
 <?php
 
@@ -38,7 +29,7 @@ while ($linha = $executa->fetch(PDO::FETCH_OBJ)){
 
 
       ?>                       
-    <a href="#" id="carro"><div id="carouselExampleControls<?php echo $linha->idcarros?>" class="carousel slide" data-ride="carousel">
+    <a href="service2.php?id=<?php echo $linha->idcarros?>"id="carro"><div id="carouselExampleControls<?php echo $linha->idcarros?>" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
 
     <?php
@@ -206,7 +197,7 @@ if(sizeof($nomearray)>1){
     
     
   }
-  .carousel-item, .active{
+  .carousel-item.active{
     width:100%;
     
     

@@ -11,5 +11,7 @@ require_once("seguranca.php");
 </head>
 <body>
    <a href="cadastrar_carr.php">Cadastrar carro</a>
+     <a href="relatorio_contato.php">Relatorio Mensagens</a>
+       <a href="relatorio_carros.php">Carros cadastrados</a>
 </body>
 </html>

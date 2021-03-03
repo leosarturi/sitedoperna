@@ -20,10 +20,15 @@ require_once("seguranca.php");
             <table id="grid-data-api" class="table table-condensed table-hover table-striped" >
     <thead>
       <tr>
-        <th data-column-id="idcontato" data-type="numeric" id='identifier'> ID</th>
         <th data-column-id="nome">Nome</th>
-        <th data-column-id="telefone" >Telefone</th>
-        <th data-column-id="email">Email</th>
+        <th data-column-id="preco" >Preço</th>
+        <th data-column-id="marca">Marca</th>
+        <th data-column-id="modelo">Modelo</th>
+        <th data-column-id="ano">Ano</th>
+        <th data-column-id="cambio">Cambio</th>
+        <th data-column-id="portas">Portas</th>
+        <th data-column-id="combustivel">Combustivel</th>
+        <th data-column-id="quilometragem">KM</th>
         <th data-column-id="commands" data-formatter="commands" data-sortable="false" ></th>
       </tr>
     </thead>
@@ -76,12 +81,11 @@ require_once("seguranca.php");
   $(document).ready(function(){
       var grid = $("#grid-data-api").bootgrid({
           ajax: true,
-          url: "mod_select_contato.php",
+          url: "mod_select_carros.php",
           formatters: {
               "commands": function(column, row)
               {
-                  return "<button type=\"button\" class=\"btn btn-xs btn-default command-edit\" data-row-id=\"" + row.idcontato + "\"><span class=\"glyphicon glyphicon-plus\"></span></button> " +
-                                    "<button type=\"button\" class=\"btn btn-xs btn-default command-delete\" data-row-id=\"" + row.idcontato + "\"><span class=\"glyphicon glyphicon-trash\"></span></button>";
+                  return                           "<button type=\"button\" class=\"btn btn-xs btn-default command-delete\" data-row-id=\"" + row.idcarros + "\"><span class=\"glyphicon glyphicon-trash\"></span></button>";
               }
 
           }
@@ -94,12 +98,12 @@ require_once("seguranca.php");
              $("#myModal").modal();
           }).end().find(".command-delete").on("click", function(e)
           {
-              document.location = 'deletar_contato.php?idcontato=' + $(this).data("row-id");
+              document.location = 'deletar_carros.php?idcarros=' + $(this).data("row-id");
           });
       });
 
       $('#myModal').on('show.bs.modal', function (event) {
-          var url = "relatorio_contato_json.php?id=" + id;
+          var url = "relatorio_carros_json.php?id=" + id;
 
             
           modal = $(this)

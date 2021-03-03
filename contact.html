@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -15,7 +16,7 @@
 <script type='text/javascript' src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
 
   <title>
-    Perna
+    Automotive - Fale Conosco
   </title>
 
   <!-- slider stylesheet -->
@@ -33,6 +34,7 @@
   <link href="css/responsive.css" rel="stylesheet" />
 
 </head>
+
 
 <body class="sub_page">
   <div class="hero_area">
@@ -64,7 +66,7 @@
                   </a>
                 </li>
                 <li class="nav-item active">
-                  <a class="nav-link" href="contact.html">Fale com nós</a>
+                  <a class="nav-link" href="contact.html">Fale conosco</a>
                 </li>
               </ul>
             </div>
@@ -84,6 +86,7 @@
       <div class="heading_container">
         <h2 class="">
           con<span>ta</span>te-nos
+
         </h2>
       </div>
 
@@ -93,7 +96,7 @@
         <div class="col-lg-8 col-md-7 px-0">
           <div class="map_container">
             <div class="map-responsive">
-              <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Eiffel+Tower+Paris+France" width="600" height="300" frameborder="0" style="border:0; width: 100%; height:100%" allowfullscreen></iframe>
+              <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=AV+bento+Munhoz+da+rocha+n+503+loja+2" width="600" height="300" frameborder="0" style="border:0; width: 100%; height:100%" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -115,6 +118,27 @@
               <button type="submit">
                 ENVIAR
               </button>
+                  <script type="text/javascript">
+$(document).ready(function() { 
+    // bind form using ajaxForm 
+    $('#jsonForm').ajaxForm({ 
+        // dataType identifies the expected content type of the server response 
+        dataType:  'json', 
+ 
+        // success identifies the function to invoke when the server response 
+        // has been received 
+        success:   function(data){
+            if (data.status==1){
+              $.growl.notice({ title:'Status:', message: data.mensagem });
+              $("#jsonForm").trigger("reset");
+            }else{
+              $.growl.error({ message: data.mensagem });
+            }
+        } 
+    })
+  }); 
+  </script>
+
             </div>
           </form>
         </div>
@@ -125,15 +149,16 @@
   <!-- end contact section -->
 
 
+
   <!-- info section -->
 
-  <section class="info_section  layout_padding2-top">
+   <section class="info_section  layout_padding2-top">
     <div class="social_container">
       <div class="social_box">
-        <a href="http://www.facebook.com">
+        <a href="https://facebook.com/multimarcas.automotive">
           <img src="images/fb.png" alt="">
         </a>
-        <a href="http://www.instagram.com">
+        <a href="https://instagram.com/automotive.revenda">
           <img src="images/instagram.png" alt="">
         </a>
       </div>
@@ -143,10 +168,10 @@
         <div class="row">
           <div class="col-md-6 col-lg-3">
             <h6>
-              SOBRE NÓS
+              Sobre nós
             </h6>
             <p>
-              AAAAAAAA AAAAAAAAAAAA AAAAAAAAAA
+              Somos uma nova empresa começando com o ramo de revenda de carros na cidade de União da Vitória e região.
             </p>
           </div>
           <div class="col-md-6 col-lg-3">
@@ -154,9 +179,7 @@
               Instagram
             </h6>
             <p>
-              AAAAAAAAAA AAAAAAAAAA
-              AAAAAAAA
-              AAAAAAAAAAAAAAAA
+              @automotive.revenda
             </p>
           </div>
           <div class="col-md-6 col-lg-3">
@@ -164,26 +187,25 @@
               PRECISA DE AJUDA?
             </h6>
             <p>
-              AAAAAAAAAAA AAAAAAAAAAAA AAAAAAAAAA
-              AAAAAAAAAAA
+              Contate-nos em nosso WhatsApp
             </p>
           </div>
           <div class="col-md-6 col-lg-3">
             <h6>
-              CONTATE-NOS
+              Venha até nós
             </h6>
-            <div class="info_link-box">
-              <a href="">
-                <img src="images/location.png" alt="">
-                <span> AV BENTO M... </span>
+            <div  disabled class="info_link-box">
+              <a disabled >
+                <img src="images/location.png"  alt="">
+                <span> Av Bento Munhoz da Rocha Neto n° 503 Loja 2  </span>
               </a>
-              <a href="">
-                <img src="images/call.png" alt="">
-                <span>+55 (42) 9 9999-9999</span>
+              <a disabled >
+                <img src="images/call.png"  alt="">
+                <span>+55 (42) 9 8869-2001</span>
               </a>
-              <a href="">
-                <img src="images/mail.png" alt="">
-                <span> PERNA@gmail.com</span>
+              <a disabled >
+                <img src="images/mail.png"  alt="">
+                <span> automotivemultimarcas@hotmail.com</span>
               </a>
             </div>
           </div>
@@ -191,9 +213,11 @@
       </div>
     </div>
     <!-- footer section -->
+
     <section class=" footer_section">
       <div class="container">
         <p>
+         
         </p>
       </div>
     </section>
@@ -201,7 +225,6 @@
 
   </section>
 
-  <!-- end info section -->
 
 
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
@@ -219,7 +242,39 @@
     }
 
 
+
+
 </style>
 </body>
 
 </html>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<a href="https://api.whatsapp.com/send?phone=5542988692001" class="float" target="_blank">
+<i class="fa fa-whatsapp my-float"></i>
+</a>
+
+ <style type="text/css">
+
+   
+
+    .float{
+  position:fixed;
+  width:60px;
+  height:60px;
+  bottom:40px;
+  right:40px;
+  background-color:#25d366;
+  color:#FFF;
+  border-radius:50px;
+  text-align:center;
+  font-size:30px;
+  box-shadow: 2px 2px 3px #999;
+  z-index:100;
+}
+
+.my-float{
+  margin-top:16px;
+}
+
+
+</style>
