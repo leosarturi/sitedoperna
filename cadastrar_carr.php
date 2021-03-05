@@ -2,6 +2,7 @@
 
 require_once("connect.php");
 require_once("seguranca.php");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,10 +11,15 @@ require_once("seguranca.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de carros</title>
     <script src="js/jquery.js"></script>
+    <script src="js/jquery.growl.js"></script>
+    <script src="js/jquery.form.js"></script>
+
 </head>
 <body>
+<link rel="stylesheet" href="css/jquery.growl.css">
 <?php
 if(isset($_GET['idcarros'] )){
+   
     $executa=$db->prepare("select * from carros where idcarros=:id");
     $executa->BindParam(':id',$_GET['idcarros']);
     $executa->execute();
@@ -28,11 +34,11 @@ if(isset($_GET['idcarros'] )){
 
          
     ?>
- <form action="cadastrar_dados.php" method="POST" enctype="multipart/form-data">
+ <form action="cadastrar_dados.php" id="jsonForm" method="POST" enctype="multipart/form-data" >
  
         Nome do carro<input type="text" name="nome" value="<?php echo $linha->nome ?>"><br>
         Descriçao do carro<input type="text" name="desc" value="<?php echo $linha->descricao ?>"><br>
-        Preço do carro<input type="number" name="preco" value="<?php echo $linha->preco ?>"><br>
+        Preço do carro<input type="number" step="0.01" name="preco" value="<?php echo $linha->preco ?>"><br>
         Marca<input type="text" name="marca" value="<?php echo $linha->marca ?>"><br>
         Modelo<input type="text" name="modelo" value="<?php echo $linha->modelo ?>"><br>
         Ano<input type="number" name="ano" value="<?php echo $linha->ano ?>"><br>
@@ -70,9 +76,10 @@ if(isset($_GET['idcarros'] )){
     </form>
 
 <?php    
+   
 }else{
 ?>
-    <form action="cadastrar_dados.php" method="POST" enctype="multipart/form-data">
+    <form action="cadastrar_dados.php" id="jsonForm" method="POST" enctype="multipart/form-data">
         Nome do carro<input type="text" name="nome"><br>
         Descriçao do carro<input type="text" name="desc"><br>
         Preço do carro<input type="number" name="preco"><br>
@@ -100,6 +107,25 @@ if(isset($_GET['idcarros'] )){
 </body>
 </html>
 <script>
+    $(document).ready(function() { 
+//bind form using ajaxForm 
+  $('#jsonForm').ajaxForm({ 
+      // dataType identifies the expected content type of the server response 
+      dataType:  'json', 
+      
+      // success identifies the function to invoke when the server response 
+      // has been received 
+      success:   function(data){
+          if (data.status==1){
+            
+            $.growl.notice({ title:'Status:', message: data.mensagem });
+            $("#jsonForm").trigger("reset");
+          }else{
+            $.growl.error({ message: data.mensagem });
+          }
+      } 
+  })
+}); 
 function editarimg(id){
     if(!document.getElementById('query').value.includes(id)){
             $("#query").val($("#query").val()+","+id);

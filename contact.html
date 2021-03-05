@@ -3,6 +3,15 @@
 <html>
 
 <head>
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+  </script>
+  <script type="text/javascript" src="js/custom.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/jquery-form/form@4.3.0/dist/jquery.form.min.js" integrity="sha384-qlmct0AOBiA2VPZkMY3+2WqkHtIQ9lSdAsAn5RUJD/3vA5MKDgSGcdmIv4ycVxyn" crossorigin="anonymous"></script>
+  <script src="js/jquery.growl.js"></script>
+
+
   <!-- Basic -->
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -12,8 +21,8 @@
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta name="author" content="" />
-  <script type='text/javascript' src='https://code.jquery.com/jquery-1.11.0.js'></script>
-<script type='text/javascript' src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
+  <!-- <script type='text/javascript' src='https://code.jquery.com/jquery-1.11.0.js'></script> -->
+<!-- <script type='text/javascript' src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script> -->
 
   <title>
     Automotive - Fale Conosco
@@ -101,7 +110,7 @@
           </div>
         </div>
         <div class="col-md-5 col-lg-4 px-0">
-          <form action="inserir_contato.php" method="POST">
+          <form id="jsonForm" action="inserir_contato.php" method="POST">
             <div>
               <input type="text" placeholder="Nome Completo" required="" name="nome" />
             </div>
@@ -115,29 +124,10 @@
               <input type="text" class="message-box" placeholder="Mensagem" required="" name="mensagem" />
             </div>
             <div class="d-flex ">
-              <button type="submit">
+              <button type="submit" id="button">
                 ENVIAR
               </button>
-                  <script type="text/javascript">
-$(document).ready(function() { 
-    // bind form using ajaxForm 
-    $('#jsonForm').ajaxForm({ 
-        // dataType identifies the expected content type of the server response 
-        dataType:  'json', 
- 
-        // success identifies the function to invoke when the server response 
-        // has been received 
-        success:   function(data){
-            if (data.status==1){
-              $.growl.notice({ title:'Status:', message: data.mensagem });
-              $("#jsonForm").trigger("reset");
-            }else{
-              $.growl.error({ message: data.mensagem });
-            }
-        } 
-    })
-  }); 
-  </script>
+                 
 
             </div>
           </form>
@@ -227,12 +217,6 @@ $(document).ready(function() {
 
 
 
-  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
-  </script>
-  <script type="text/javascript" src="js/custom.js"></script>
-
 
     <style type="text/css">
 
@@ -249,6 +233,7 @@ $(document).ready(function() {
 
 </html>
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+   <link rel="stylesheet" href="css/jquery.growl.css">
 <a href="https://api.whatsapp.com/send?phone=5542988692001" class="float" target="_blank">
 <i class="fa fa-whatsapp my-float"></i>
 </a>
@@ -278,3 +263,33 @@ $(document).ready(function() {
 
 
 </style>
+<script type="text/javascript">
+  
+$(document).ready(function() { 
+//bind form using ajaxForm 
+  $('#jsonForm').ajaxForm({ 
+      // dataType identifies the expected content type of the server response 
+      dataType:  'json', 
+      
+      // success identifies the function to invoke when the server response 
+      // has been received 
+      success:   function(data){
+          if (data.status==1){
+            
+            $.growl.notice({ title:'Status:', message: data.mensagem });
+            $("#jsonForm").trigger("reset");
+          }else{
+            $.growl.error({ message: data.mensagem });
+          }
+      } 
+  })
+}); 
+
+// $("button").click(function(){
+//   console.log(1);
+// $.ajax({url: "inserir_contato.php", success: function(result){
+// alert(result);
+// }});
+// });
+
+</script>

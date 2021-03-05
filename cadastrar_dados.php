@@ -4,6 +4,7 @@ require_once("seguranca.php");
 include("WideImage/WideImage.php");
 $target_dir = "imagens/";
 if(isset($_POST['id'])){
+  try{
 $executa = $db->prepare("update carros set nome=:nome,descricao=:desc,preco=:preco,marca=:marca,modelo=:modelo,ano=:ano,cambio=:cambio,portas=:portas,combustivel=:combustivel,quilometragem=:quilometragem where idcarros=:id");
 $executa->BindParam(':id',$_POST['id']);
 $executa->BindParam(':nome',$_POST['nome']);
@@ -17,6 +18,14 @@ $executa->BindParam(':portas',$_POST['portas']);
 $executa->BindParam(':combustivel',$_POST['combustivel']);
 $executa->BindParam(':quilometragem',$_POST['quilometragem']);
 $executa->execute();
+if($executa){
+  $ret['status']=1;
+  $ret['mensagem']="sucesso";
+}else{
+  $ret['status']=0;
+    $ret['mensagem']="erro";
+
+}
 $query = $_POST['query'];
 $query = explode("," ,$query);
 foreach( $query as $var){
@@ -42,11 +51,21 @@ $executa3->BindParam(':id',$_POST['id']);
 $executa3->BindParam(':nome',$valor['name']);
 
 $executa3->execute();
-
+ 
+    
 }else{
-  echo "1";
+  
+   
 }
 }
+echo json_encode($ret);
+exit;
+}catch(Excepition $e){
+  $ret['status']=0;
+  $ret['mensagem']=$e;
+  
+}
+
 }else{
 $id = new DateTime();
 $id= $id->getTimestamp();
@@ -54,7 +73,7 @@ $nome_carro = $_POST['nome'];
 $desc_carro = $_POST['desc'];
 $preco_carro = $_POST['preco'];
 
-
+try{
 
 
  $executa = $db->prepare("insert  into carros (idcarros,nome,descricao,preco,marca,modelo,ano,cambio,portas,combustivel,quilometragem) values(:id,:nome,:desc,:preco,:marca,:modelo,:ano,:cambio,:portas,:combustivel,:quilometragem)");
@@ -71,6 +90,14 @@ $preco_carro = $_POST['preco'];
  $executa->BindParam(':quilometragem',$_POST['quilometragem']);
  
  $executa->execute();
+ if($executa){
+  $ret['status']=1;
+  $ret['mensagem']="sucesso";
+  
+ }else{
+  $ret['status']=0;
+  $ret['mensagem']="erro";
+ }
 foreach ( $_FILES as $chave => $valor ) { 
     $$chave = $valor;
 $diro = $valor['tmp_name'];
@@ -86,10 +113,20 @@ if($a!=null){
   $executa2->BindParam(':nome',$valor['name']);
   
   $executa2->execute();
+ 
   
 }else{
-    echo "1";
+  
+  
 }
+}
+echo json_encode($ret);
+  exit;
+}
+catch(Exception $e){
+  $ret['status']=0;
+    $ret['mensagem']=$e;
+    
 }
 }
 function resize2($originalImage,$dir){

@@ -263,6 +263,9 @@ $id = $_GET['id'];
             <div>
               <input type="text" placeholder="<?php echo 'Modelo: ' .  $linha->nome ?>" name="nome" disabled  />
             </div>
+            <div>
+              <input type="text" placeholder="<?php echo 'R$ ' .  $linha->preco  ?>" name="preco" disabled  />
+            </div>
             
             <div>
               <input type="text" class="message-box" placeholder="<?php echo 'Descrição: ' .  $linha->descricao ?>" disabled=""  />
