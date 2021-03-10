@@ -55,6 +55,7 @@ require_once("seguranca.php");
   </div>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.css" rel="stylesheet">
+<link rel="stylesheet" href="css/jquery.growl.css">
 <script src="js/jquery-3.4.1.min.js"></script>
 <script src="js/jquery.bootgrid.min.js"></script>
 <script src="js/jquery.bootgrid.fa.min.js"></script>
@@ -74,10 +75,26 @@ require_once("seguranca.php");
       <script src="js/jquery.mask.js"></script>
       
 
-
+ <script src="js/jquery.growl.js"></script>
+    <script src="js/jquery.form.js"></script>
 
 <script>
   var id;
+  function atualizar(){
+    console.log("asd");
+    var grid = $("#grid-data-api").bootgrid({
+          ajax: true,
+          url: "mod_select_carros.php",
+          formatters: {
+              "commands": function(column, row)
+              {
+                  return "<button type=\"button\" class=\"btn btn-xs btn-default command-delete\" data-row-id=\"" + row.idcarros + "\"><span class=\"glyphicon glyphicon-trash\"></span></button>" +"<button type=\"button\" class=\"btn btn-xs btn-default command-edit\" data-row-id=\"" + row.idcarros + "\"><span class=\"glyphicon glyphicon-edit\"></span></button>";
+              }
+
+          }
+
+      });
+  }
   $(document).ready(function(){
       var grid = $("#grid-data-api").bootgrid({
           ajax: true,
@@ -97,7 +114,20 @@ require_once("seguranca.php");
             document.location = 'cadastrar_carr.php?idcarros=' + $(this).data("row-id");
           }).end().find(".command-delete").on("click", function(e)
           {
-              document.location = 'deletar_carros.php?idcarros=' + $(this).data("row-id");
+              //document.location = 'deletar_carros.php?idcarros=' + $(this).data("row-id");
+              $.ajax({
+  url: 'deletar_carros.php?idcarros=' + $(this).data("row-id"),
+  dataType:'json',
+  success: function(data){
+    setTimeout(function(){location.reload();},1500);
+  $.growl.notice({ title:'Status:', message: data.mensagem });
+
+  }
+  }
+  
+
+ 
+);
           });
       });
 
@@ -117,6 +147,25 @@ require_once("seguranca.php");
 
 
   });
+  $(document).ready(function() { 
+//bind form using ajaxForm 
+  $('#jsonForm').ajaxForm({ 
+      // dataType identifies the expected content type of the server response 
+      dataType:  'json', 
+      
+      // success identifies the function to invoke when the server response 
+      // has been received 
+      success:   function(data){
+          if (data.status==1){
+            
+            $.growl.notice({ title:'Status:', message: data.mensagem });
+            $("#jsonForm").trigger("reset");
+          }else{
+            $.growl.error({ message: data.mensagem });
+          }
+      } 
+  })
+}); 
 </script>
   
 </body>
