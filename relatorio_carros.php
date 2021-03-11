@@ -1,5 +1,6 @@
 <?php
 require_once("seguranca.php");
+
 ?>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link href="css/elegant-icons-style.css" rel="stylesheet" />
@@ -77,7 +78,33 @@ require_once("seguranca.php");
 
  <script src="js/jquery.growl.js"></script>
     <script src="js/jquery.form.js"></script>
+    <?php
+if(isset($_GET['status'])){
+  
+  $status =$_GET['status'];
 
+
+  ?>
+  <script>
+  
+
+  var status = "<?php echo $status; ?>";
+if(status==1){
+
+
+            $.growl.notice({ title:'Status:', message: "sucesso" } );
+}else if(status==0){
+  $.growl.error({ title:'Status:', message: "erro" } );
+}
+
+
+  
+
+
+  </script>
+  <?php
+}
+?>
 <script>
   var id;
   function atualizar(){
@@ -119,8 +146,8 @@ require_once("seguranca.php");
   url: 'deletar_carros.php?idcarros=' + $(this).data("row-id"),
   dataType:'json',
   success: function(data){
-    setTimeout(function(){location.reload();},1500);
-  $.growl.notice({ title:'Status:', message: data.mensagem });
+    
+  window.location.href= "relatorio_carros.php?status=" + data.status;
 
   }
   }
@@ -168,9 +195,7 @@ require_once("seguranca.php");
 }); 
 </script>
   
-</body>
-</html>
-            </li>     
+</li>     
             </tbody>
             </table>  
         </div>
@@ -181,5 +206,5 @@ require_once("seguranca.php");
                         
                         
                       </div>
-                      
- 
+</body>
+</html>

@@ -34,7 +34,7 @@ if(isset($_GET['idcarros'] )){
 
          
     ?>
- <form action="cadastrar_dados.php" id="jsonForm" method="POST" enctype="multipart/form-data" >
+ <form action="cadastrar_dados.php" id="jsonFormU" method="POST" enctype="multipart/form-data" >
  
         Nome do carro<input type="text" name="nome" value="<?php echo $linha->nome ?>"><br>
         Descriçao do carro<input type="text" name="desc" value="<?php echo $linha->descricao ?>"><br>
@@ -116,6 +116,27 @@ if(isset($_GET['idcarros'] )){
       // success identifies the function to invoke when the server response 
       // has been received 
       success:   function(data){
+        window.location.href="relatorio_carros.php?status="+data.status;
+          if (data.status==1){
+            
+            $.growl.notice({ title:'Status:', message: data.mensagem });
+            $("#jsonForm").trigger("reset");
+          }else{
+            $.growl.error({ message: data.mensagem });
+          }
+      } 
+  })
+  $('#jsonFormU').ajaxForm({ 
+      // dataType identifies the expected content type of the server response 
+      dataType:  'json', 
+      
+      // success identifies the function to invoke when the server response 
+      // has been received 
+      
+      success:   function(data){
+          
+          window.location.href="relatorio_carros.php?status="+data.status;
+          
           if (data.status==1){
             
             $.growl.notice({ title:'Status:', message: data.mensagem });

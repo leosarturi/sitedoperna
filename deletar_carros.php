@@ -15,12 +15,12 @@ $id = $_GET['idcarros'];
              
              
       
-            $ret['status'] = "sucesso";
+            $ret['status'] = "1";
             $ret['mensagem'] = 'Mensagem: ' . "carro deletado com sucesso";
             
       
       }else{
-            $ret['status'] = 'erro';
+            $ret['status'] = '0';
             $ret['mensagem'] = 'Mensagem: ' . "Erro ao deletar carro ";
       
       }
