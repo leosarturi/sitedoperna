@@ -2,6 +2,7 @@
 
 require_once("connect.php");
 require_once("seguranca.php");
+include("home.php");
 
 ?>
 <!DOCTYPE html>
@@ -36,8 +37,14 @@ if(isset($_GET['idcarros'] )){
     ?>
  <form action="cadastrar_dados.php" id="jsonFormU" method="POST" enctype="multipart/form-data" >
  
-        Nome do carro<input type="text" name="nome" value="<?php echo $linha->nome ?>"><br>
-        Descriçao do carro<input type="text" name="desc" value="<?php echo $linha->descricao ?>"><br>
+       
+       
+   <div class="aaa">
+<div class="bbb">
+ 
+
+        Nome do carro<input type="text" name="nome"  value="<?php echo $linha->nome ?>"><br>
+        Descriçao do carro<input type="text"  name="desc" value="<?php echo $linha->descricao ?>"><br>
         Preço do carro<input type="number" step="0.01" name="preco" value="<?php echo $linha->preco ?>"><br>
         Marca<input type="text" name="marca" value="<?php echo $linha->marca ?>"><br>
         Modelo<input type="text" name="modelo" value="<?php echo $linha->modelo ?>"><br>
@@ -70,15 +77,20 @@ if(isset($_GET['idcarros'] )){
               
               <div id="destino">
         </div>
+
         <input type="hidden" name="query" id="query" value="">
         <input type="hidden" name="imagemcount" id="count" value="1">
         <br><button type="submit">Salvar</button>
     </form>
+</div>
+</div>
+
 
 <?php    
    
 }else{
-?>
+?> <div class="aaa">
+<div class="bbb">
     <form action="cadastrar_dados.php" id="jsonForm" method="POST" enctype="multipart/form-data">
         Nome do carro<input type="text" name="nome"><br>
         Descriçao do carro<input type="text" name="desc"><br>
@@ -101,6 +113,8 @@ if(isset($_GET['idcarros'] )){
         <input type="hidden" name="imagemcount" id="count" value="1">
         <br><button type="submit">Salvar</button>
     </form>
+</div>
+</div>
     <?php
 }
 ?>
@@ -185,3 +199,16 @@ function deletarimagem(id){
     document.getElementById('count').value=count;
     }
 </script>
+<style type="text/css">
+    .aaa{
+        width: 100%;
+
+    }
+    .bbb{
+        width: 50%;
+        margin-left: 40%;
+
+
+    }
+
+</style>

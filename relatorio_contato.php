@@ -1,10 +1,10 @@
 <?php
 require_once("seguranca.php");
+include("home.php");
 ?>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link href="css/elegant-icons-style.css" rel="stylesheet" />
+
+   <link href="css/elegant-icons-style.css" rel="stylesheet" />
   <link href="css/font-awesome.min.css" rel="stylesheet" />
-   <link href="css/style.css" rel="stylesheet">
   <link href="css/style-responsive.css" rel="stylesheet" />
 <section id="main-content">
       <section class="wrapper">
@@ -31,33 +31,38 @@ require_once("seguranca.php");
     </tbody>
   </table>
 
-  <div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-             <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Mais Informações de </h4>
-      </div>
-      <div class="modal-body" id="conteudoModal">     
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+
+  <div class="modal fade show" id="myModal" tabindex="-1"  role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <i class="material-icons">clear</i>
+          </button>
+        </div>
+
+
+        <div class="modal-body">
+          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-link">Nice Button</button>
+          <button type="button" class="btn btn-danger btn-link" data-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
-
   </div>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.css" rel="stylesheet">
-<script src="js/jquery-3.4.1.min.js"></script>
+
 <script src="js/jquery.bootgrid.min.js"></script>
 <script src="js/jquery.bootgrid.fa.min.js"></script>
 
-  <!-- <script src="js/jquery.js"></script> -->
-  <!-- bootstrap -->
   <script src="js/bootstrap.min.js"></script>
-  <!-- nice scroll -->
+
   <script src="js/jquery.scrollTo.min.js"></script>
   <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
   
@@ -80,8 +85,8 @@ require_once("seguranca.php");
           formatters: {
               "commands": function(column, row)
               {
-                  return "<button type=\"button\" class=\"btn btn-xs btn-default command-edit\" data-row-id=\"" + row.idcontato + "\"><span class=\"glyphicon glyphicon-plus\"></span></button> " +
-                                    "<button type=\"button\" class=\"btn btn-xs btn-default command-delete\" data-row-id=\"" + row.idcontato + "\"><span class=\"glyphicon glyphicon-trash\"></span></button>";
+                  return "<button type=\"button\"  class=\"btn btn-xs btn-default command-edit\" data-toggle=\"modal\" data-target=\"#myModal\" data-row-id=\"" + row.idcontato + "\"><span class=\"fa fa-plus-square\"></span></button> " +
+                                    "<button type=\"button\" class=\"btn btn-xs btn-default command-delete\" data-row-id=\"" + row.idcontato + "\"><span class=\"fa fa-trash\"></span></button>" ;
               }
 
           }
@@ -104,7 +109,7 @@ require_once("seguranca.php");
             
           modal = $(this)
           $.getJSON(url, function(data){
-            
+
               modal.find('.modal-title').text('Mais Informações de ' + data.firstName)
               modal.find('.modal-body').html( data.resultado)
 

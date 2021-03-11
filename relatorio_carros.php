@@ -1,12 +1,9 @@
 <?php
 require_once("seguranca.php");
-
 ?>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link href="css/elegant-icons-style.css" rel="stylesheet" />
   <link href="css/font-awesome.min.css" rel="stylesheet" />
-   <link href="css/style.css" rel="stylesheet">
-  <link href="css/style-responsive.css" rel="stylesheet" />
+
 <section id="main-content">
       <section class="wrapper">
         <!--overview start-->
@@ -28,7 +25,6 @@ require_once("seguranca.php");
         <th data-column-id="ano">Ano</th>
         <th data-column-id="cambio">Cambio</th>
         <th data-column-id="portas">Portas</th>
-        <th data-column-id="combustivel">Combustivel</th>
         <th data-column-id="quilometragem">KM</th>
         <th data-column-id="commands" data-formatter="commands" data-sortable="false" ></th>
       </tr>
@@ -115,7 +111,7 @@ if(status==1){
           formatters: {
               "commands": function(column, row)
               {
-                  return "<button type=\"button\" class=\"btn btn-xs btn-default command-delete\" data-row-id=\"" + row.idcarros + "\"><span class=\"glyphicon glyphicon-trash\"></span></button>" +"<button type=\"button\" class=\"btn btn-xs btn-default command-edit\" data-row-id=\"" + row.idcarros + "\"><span class=\"glyphicon glyphicon-edit\"></span></button>";
+                  return "<button type=\"button\" class=\"btn btn-xs btn-default command-delete\" data-row-id=\"" + row.idcarros + "\"><span class=\"fa fa-trash\"></span></button>" +"<button type=\"button\" class=\"btn btn-xs btn-default command-edit\" data-row-id=\"" + row.idcarros + "\"><span class=\"fa fa-pencil-square-o\"></span></button>";
               }
 
           }
@@ -129,7 +125,7 @@ if(status==1){
           formatters: {
               "commands": function(column, row)
               {
-                  return "<button type=\"button\" class=\"btn btn-xs btn-default command-delete\" data-row-id=\"" + row.idcarros + "\"><span class=\"glyphicon glyphicon-trash\"></span></button>" +"<button type=\"button\" class=\"btn btn-xs btn-default command-edit\" data-row-id=\"" + row.idcarros + "\"><span class=\"glyphicon glyphicon-edit\"></span></button>";
+                  return "<button type=\"button\" class=\"btn btn-xs btn-default command-delete\" data-row-id=\"" + row.idcarros + "\"><span class=\"fa fa-trash\"></span></button>" +"<button type=\"button\" class=\"btn btn-xs btn-default command-edit\" data-row-id=\"" + row.idcarros + "\"><span class=\"fa fa-pencil-square-o\"></span></button>";
               }
 
           }
@@ -194,6 +190,7 @@ if(status==1){
   })
 }); 
 </script>
+
   
 </li>     
             </tbody>
