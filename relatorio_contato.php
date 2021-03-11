@@ -57,6 +57,7 @@ include("home.php");
   </div>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.css" rel="stylesheet">
+<link href="css/jquery.growl.css" rel="stylesheet">
 
 <script src="js/jquery.bootgrid.min.js"></script>
 <script src="js/jquery.bootgrid.fa.min.js"></script>
@@ -72,8 +73,37 @@ include("home.php");
     <!--custome script for all page-->
   <script src="js/scripts.js"></script>
       <script src="js/jquery.mask.js"></script>
+      <script src="js/jquery.growl.js"></script>
       
 
+      
+      <?php
+if(isset($_GET['status'])){
+  
+  $status =$_GET['status'];
+
+
+  ?>
+  <script>
+  
+
+  var status = "<?php echo $status; ?>";
+if(status==1){
+
+
+            $.growl.notice({ title:'Status:', message: "sucesso" } );
+}else if(status==0){
+  $.growl.error({ title:'Status:', message: "erro" } );
+}
+
+
+  
+
+
+  </script>
+  <?php
+}
+?>
 
 
 <script>
@@ -99,6 +129,23 @@ include("home.php");
              $("#myModal").modal();
           }).end().find(".command-delete").on("click", function(e)
           {
+            $.ajax({ 
+      // dataType identifies the expected content type of the server response 
+      dataType:  'json', 
+      url:'deletar_contato.php?idcontato=' + $(this).data("row-id"),
+      // success identifies the function to invoke when the server response 
+      // has been received 
+      success:   function(data){
+        window.location.href="relatorio_contato.php?status="+data.status;
+          if (data.status==1){
+            
+            $.growl.notice({ title:'Status:', message: data.mensagem });
+            $("#jsonForm").trigger("reset");
+          }else{
+            $.growl.error({ message: data.mensagem });
+          }
+      } 
+  })
               document.location = 'deletar_contato.php?idcontato=' + $(this).data("row-id");
           });
       });

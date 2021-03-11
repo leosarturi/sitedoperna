@@ -1,5 +1,6 @@
 <?php
 require_once("seguranca.php");
+require_once("home.php");
 ?>
   <link href="css/elegant-icons-style.css" rel="stylesheet" />
   <link href="css/font-awesome.min.css" rel="stylesheet" />
