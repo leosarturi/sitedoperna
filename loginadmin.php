@@ -11,8 +11,9 @@ if($count==1){
     $linha = $executa->fetch(PDO::FETCH_OBJ);
     if(($linha->usuario== $_POST['usuario']) && $linha->senha==$_POST['senha']){
     $_SESSION['logado']=1;
+    $_SESSION['usuario']= $_POST['usuario'];
     
-    header('Location: home.php');
+    header('Location: relatorio_contato.php');
     }else{
       ?> <script> window.location="loginadmin.html" </script> <?php
     }
